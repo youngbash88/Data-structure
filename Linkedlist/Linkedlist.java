@@ -4,43 +4,36 @@ public class Linkedlist {
     private Node tail = null;
     private int size = 0;
 
-    public void insertBegin(int data) {
-        if (size == 0) {
-            Node tmp = new Node();
-            tmp.data = data;
-            head = tmp;
-            tail = tmp;
-            size++;
+   public void insertBegin(int data) {
+        Node tmp = new Node();
+        tmp.data = data;
+        tmp.next = head;
+
+        if (head != null) {
+            head.prev = tmp;
         } else {
-            Node tmp = new Node();
-            Node h = tail;
-            tmp.data = data;
-            tail.next = tmp;
             tail = tmp;
-            tail.prev = h;
-            size++;
         }
+
+        head = tmp;
+        size++;
     }
     
     
 
-    public void insertEnd(int num) {
-        if (size == 0) {
-            Node tmp = new Node();
-            tmp.data = num;
-            head = tmp;
-            tail = tmp;
-            size++;
+   public void insertEnd(int data) {
+        Node tmp = new Node();
+        tmp.data = data;
+        tmp.prev = tail;
+
+        if (tail != null) {
+            tail.next = tmp;
         } else {
-            Node tmp = new Node();
-            Node h = head;
-            tmp.data = num;
-            tmp.next = head;
-            head = tmp;
-            h.prev = head;
-            size++;
+            head = tmp; 
         }
 
+        tail = tmp;
+        size++;
     }
     public void view ()
     {
